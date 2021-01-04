@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'vendor/reset';
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+html, body, #app {
+  height: 100%;
+  display: flex;
+  width: 100%;
+}
+
+// .section
+.section {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section--black {
+  background-color: #000;
+}
+
+.section--full {
+  align-items: baseline;
+  flex: 1;
+  align-self: stretch;
+  overflow: auto;
+}
+
+// .form
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/// .form__group
+.form__group {
+  display: flex;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// .text-field
+.text-field {
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  padding: 8px 6px 6px;
+  font-size: 16px;
+  border-bottom: 2px solid #fff;
+}
+
+.text-field--large {
+  padding: 16px 8px 12px;
+  font-size: 20px;
+  border-bottom: 4px solid #fff;
+}
+
+// .button
+.button {
+  background-color: #fff;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+  padding: 8px 10px;
+}
+
+.button--large {
+  font-size: 20px;
+  padding: 16px 32px;
+}
+
+.button--disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}

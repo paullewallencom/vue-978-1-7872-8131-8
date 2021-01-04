@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Section #1 - Todo
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="src/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Section #1 - Todo
+                            </div>
+                            <form class="card-block" @submit.prevent="add(todo)">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Add todo"
+                                               v-model="todo"
+                                        >
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary"
+                                                    type="submit"
+                                                    :disabled="!todoIsValid"
+                                            >Add</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-block"
+                                    v-for="todo in todoItems"
+                                >
+                                    <div class="d-flex justify-content-start"
+                                         v-if="!todo.isEdited"
+                                    >
+                                        <label class="form-check-label">
+                                            <input type="checkbox"
+                                                   class="form-check-input"
+                                                   v-model="todo.finished"
+                                                   :checked="todo.finished"
+                                            >
+                                            <span class="todo"
+                                                  :class="{ 'todo__finished' : todo.finished }"
+                                            >
+                                                {{ todo.content }}
+                                            </span>
+                                        </label>
+                                        <div class="ml-auto btn-group">
+                                            <button class="btn btn-sm btn-primary"
+                                                    @click="edit(todo)"
+                                                    v-if="!isBeingEdited"
+                                            >
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger"
+                                                    @click="remove(todo)"
+                                            >
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <form v-else
+                                          @submit.prevent="update(todo)"
+                                    >
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Edit"
+                                                   v-model="editTodo"
+                                                   @keyup.esc="cancelEdit(todo)"
+                                            >
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-sm btn-primary"
+                                                        type="submit"
+                                                        :disabled="!editTodoIsValid"
+                                                >
+                                                    <i class="fa fa-save"></i>
+                                                </button>
+                                            </span>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-sm btn-danger"
+                                                        @click="remove(todo)"
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load Vue -->
+        <script src="https://unpkg.com/vue"></script>
+        <script src="src/app.js"></script>
+    </body>
+</html>

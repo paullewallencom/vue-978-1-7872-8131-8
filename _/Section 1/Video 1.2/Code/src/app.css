@@ -1,0 +1,8 @@
+.todo__finished {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.btn {
+    cursor: pointer;
+}

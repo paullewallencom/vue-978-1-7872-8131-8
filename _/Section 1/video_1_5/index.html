@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Vue Todo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="src/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Todo Application
+                            </div>
+                            <form class="card-block m-0"
+                                  @submit.prevent="add(todo)"
+                            >
+                                <div class="form-group m-0">
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Add todo"
+                                               v-model="todo"
+                                        >
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary"
+                                                    type="submit"
+                                                    :disabled="!todoIsValid"
+                                            >Add</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"
+                                    v-for="todo in todos"
+                                >
+                                    <label class="form-check-label">
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               v-model="todo.finished"
+                                        >
+                                        <span :class="{ 'todo-finished' : todo.finished }">
+                                            {{ todo.content }}
+                                        </span>
+                                    </label>
+                                    <div class="ml-auto btn-group">
+                                        <button class="btn btn-sm btn-danger"
+                                                @click="remove(todo)"
+                                        >
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="src/app.js"></script>
+    </body>
+</html>

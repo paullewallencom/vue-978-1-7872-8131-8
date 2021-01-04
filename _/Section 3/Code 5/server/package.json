@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "The server for the realtime chat application",
+  "author": "Peter van Meijgaard <petervanmeijgaard@hotmail.com>",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
+}

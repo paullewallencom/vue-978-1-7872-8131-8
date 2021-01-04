@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'vendor/reset.scss';
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+html, body, #app {
+  height: 100%;
+  display: flex;
+  width: 100%;
+}
